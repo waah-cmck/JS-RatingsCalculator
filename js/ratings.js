@@ -9,11 +9,9 @@ function collect_ratings(){
 
     elements.forEach((element) => {
 
-        rating = element.id.replace('star','');
-       
-        rating = parseInt(element.id);
-
-
+        rating = parseInt(element.id.replace('star',''));
+        ratings.count += parseInt(element.value);
+        ratings.sum += parseInt(element.value) * ratings;
 
     });
 
@@ -28,13 +26,10 @@ function collect_ratings(){
 
 };
 
-document.addEventListener('change'),() => {
-
+document.addEventListener('change',() => {
 
     const ratings = collect_ratings();
+    document.querySelector('#average').value = ratings.average.toFixed(2);
 
-    
-
-
-};
+});
 
